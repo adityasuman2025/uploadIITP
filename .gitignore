@@ -1,2 +1,3 @@
-/php/encrypt.php
+# /php/encrypt.php
 /php/connect_db.php
+/uploads/*
