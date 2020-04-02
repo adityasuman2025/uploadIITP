@@ -1,0 +1,155 @@
+@font-face
+{
+    font-family:my;
+    src: url(fonts/calibri.ttf);
+}
+
+*
+{
+  margin: 0px;
+  padding: 0px;
+}
+
+body 
+{
+  font-family: my;
+  background: #181915;
+}
+
+img
+{
+    height: 70px;
+    width: 70px;
+}
+
+.header 
+{
+  color: white;
+  background: #282923;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(to right, #9E7CC1, #8ECDEA);
+  border-image-slice: 1;
+}
+
+.login_form
+{
+  background: #f2f2f2;
+  margin:auto;
+  margin-top: 30px;
+  width: 40%;  
+  text-align: center;
+  padding: 10px; 
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px grey;
+}
+
+#iitp_logo
+{
+  height: 150px;
+  width: 150px;
+}
+
+.gif_loader
+{
+  height: 40px;
+  width: 40px;
+}
+
+.input-group {
+  margin: 10px 0px 10px 0px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin: 3px;
+}
+
+input, select, .input_div
+{
+  height: 40px;
+  width: 80%;
+  padding: 0;
+  margin: 0;
+
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  background: #f1f1f1;
+  margin: auto;
+}
+
+.input_div
+{
+  height: 28px;
+  width: 78%;
+  text-align: left;
+  font-size: 18px;
+  vertical-align: middle;
+  background: #e2e2e2;
+}
+
+.radio_input
+{
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  margin: 10px;
+  background: white;
+}
+
+.success {
+  color: #3c763d; 
+  background: #dff0d8; 
+  border: 1px solid #3c763d;
+  margin-bottom: 20px;
+}
+
+.button
+{
+  background: #337ab7;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  color: white;
+  text-decoration: none;
+  margin: 5px;
+
+  width: 100px;
+}
+
+#reg_btn
+{
+  width: 100px;
+}
+
+.error
+{
+  color: red;
+  font-size: 22px;
+  text-align: center;
+}
+
+@media screen and (max-width: 800px)
+{
+  .login_form
+  {
+    width: 85%;
+  }
+}

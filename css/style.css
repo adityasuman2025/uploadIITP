@@ -1,0 +1,247 @@
+@font-face
+{
+	font-family:my;
+	src: url(fonts/calibri.ttf);
+}
+
+body
+{	
+	padding:0;
+	margin:0;
+	font-family:my;
+	background: #20211f;
+}
+
+a
+{
+	text-decoration: none;	
+}
+
+a:hover
+{
+	text-decoration: none;
+}
+
+.row
+{
+	padding: 0px;
+	margin: 0px;
+	margin-top: 1px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.navbar
+{
+	border-radius: 0px;
+	background-color: #181915;
+	border: none;
+	/*border-bottom: 2px solid transparent;
+	border-image: linear-gradient(to right, #9E7CC1, #8ECDEA);
+	border-image-slice: 1;*/
+}
+
+.navbar-brand
+{
+	padding: 0px;
+	margin: 0px;
+	text-align: left;
+}
+
+.navbar-brand .row
+{
+	padding: 0px;
+	margin: 0px;
+}
+
+.header_bar_title
+{
+	padding: 0px;
+	margin: 0px;
+	vertical-align: middle;		
+	padding-left: 10px;
+	padding-right: 10px;
+	color: #f1f1f1;
+}
+
+.header_bar_title img
+{
+	padding: 4px;
+	height: 100%;
+}
+
+.log_btn, .log_btn:hover
+{
+	font-size: 120%;
+	color: white;
+	cursor: pointer;
+}
+
+.sudent_card, .course_card
+{
+	width: 60%;
+	background: #181915;
+	padding: 10px;
+	margin: auto;
+	box-shadow: 0px 0px 1px grey;
+	border-radius: 5px;
+	color: #f1f1f1;
+	font-size: 120%;
+}
+
+.sudent_card img
+{
+	width: 100%;
+	border-radius: 5px;
+}
+
+.course_card
+{
+	text-align: center;
+}
+
+.course_box
+{
+	text-align: left;
+	margin: auto;
+	margin-top: 10px;
+	padding: 5px;
+	box-shadow: 0px 0px 2px grey;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.course_type
+{
+	font-size: 80%;
+	color: #f2f2f2;
+}
+
+.done_feedback_box
+{
+	text-align: left;
+	margin: auto;
+	margin-top: 10px;
+	padding: 5px;
+	box-shadow: 0px 0px 2px grey;
+	border-radius: 5px;
+	/*background-color: #e2e2e2;*/
+}
+
+.done_feedback_text
+{
+	font-size: 80%;
+	color: #8cef2f;
+}
+
+input, select, textarea
+{
+	height: 40px;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+
+	padding: 5px;
+	font-size: 16px;
+	border-radius: 3px;
+	border: 1px solid gray;
+	background: #f1f1f1;
+	margin: auto;
+	color: black;
+}
+
+.radio_input
+{
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+  margin: 10px;
+  background: white;
+}
+
+#custom_amount_input
+{
+	width: 80px;
+	height: 30px;
+}
+
+textarea
+{
+	height: 80px;
+	resize: none;
+}
+
+label
+{
+	text-align: left;
+	width: 100%;
+	font-weight: 100;
+}
+
+button
+{
+	width: 50%;
+	font-size: 120%;
+	font-weight: 900;
+}
+
+.submit_btn
+{
+	float: right;
+}
+
+.view_btn img, .edit_btn img, .delt_btn img
+{
+	width: 18px;	
+}
+
+.error
+{
+	color: red;
+	font-size: 22px;
+	text-align: center;
+}
+
+.gif_loader
+{
+	height: 40px;
+	width: 40px;
+}
+
+
+#refreshed
+{
+	height: 0px;
+	opacity: 0;
+	cursor: default;
+}
+
+.go_home_btn
+{
+	width: 100%;
+	text-align: center;
+	padding: 5px;
+	margin-left: 30px;
+	color: #f1f1f1;
+	box-shadow: 0px 0px 1px #f1f1f1;
+	border-radius: 3px;
+}
+
+.go_home_btn:hover
+{
+	color: #f1f1f1;
+}
+
+.go_home_btn img
+{
+	width: 20px;
+}
+
+/*------------media queries-------------------*/
+	@media screen and (max-width: 700px)
+	{
+		.sudent_card, .course_card
+		{
+			width: 90%;
+		}
+	}
