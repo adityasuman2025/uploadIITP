@@ -64,10 +64,16 @@
 		      	var image_name = property.name;
 		        var image_extension = image_name.split('.').pop().toLowerCase();
 
+		        var only_name = image_name.substring(image_name.lastIndexOf('/')+1, image_name.lastIndexOf('.'));
+
+	        //removing special characters from name of the file
+	        	// only_name = only_name.replace(/[~!@#$%^&*()_+-=\[\]{}\\|;:'",./<>?/*-+ 	`]/g, '_');
+	        	only_name = only_name.replace(/[^a-zA-Z0-9]/g, '_');
+
 		    //enrypting the new name of the file
 		      	$.post("php/encrypt_api.php", {text: Math.floor(Date.now() / 1000), action: "encrypt"}, function(encrypted_text)
 		      	{
-		      		var new_name = encrypted_text + "." + image_extension;
+		      		var new_name = only_name + "_" + encrypted_text + "." + image_extension;
 		      		
 		      	//showing the link of the upload file
 		      		var web_address   = window.location.href   // Returns the page URL (https://example.com/bro)
@@ -96,6 +102,8 @@
 						},
 						success: function(data)
 						{
+							// console.log(data);
+
 							if(data == 0)
 							{
 								$('.error').text('Failed to upload file').css("color", 'red');
