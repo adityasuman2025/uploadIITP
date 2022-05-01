@@ -17,6 +17,7 @@
 		<meta name="language" content="English">
 		<meta name="author" content="Aditya Suman">	
 	</head>
+
 	<body>
 	<!--------navigation bar---->
 		<nav class="navbar navbar-inverse">
@@ -52,11 +53,11 @@
 
 	<!---------script--------->
 		<script type="text/javascript">
-			upload_address = "<?php echo $upload_address; ?>";
+			const upload_address = "<?php echo $upload_address ?>";
+			const allowed_extensions = <?php echo json_encode($allowed_extensions) ?>;
 
 		//for uploading a file
-		    $(document).on('change', '#file', function()
-		    {
+		    $(document).on('change', '#file', function() {
 		      	$('.error').html("<img class=\"gif_loader\" src=\"img/loaders2.gif\">");
 
 		    //getting uploaded file info
@@ -64,44 +65,40 @@
 		      	var image_name = property.name;
 		        var image_extension = image_name.split('.').pop().toLowerCase();
 
-		        var only_name = image_name.substring(image_name.lastIndexOf('/')+1, image_name.lastIndexOf('.'));
+				if (!allowed_extensions.includes(image_extension)) {
+					$('.error').text('This file is not allowed to upload').css("color", 'red');
+					return;
+				}
 
 	        //removing special characters from name of the file
+				var only_name = image_name.substring(image_name.lastIndexOf('/')+1, image_name.lastIndexOf('.'));
 	        	// only_name = only_name.replace(/[~!@#$%^&*()_+-=\[\]{}\\|;:'",./<>?/*-+ 	`]/g, '_');
 	        	only_name = only_name.replace(/[^a-zA-Z0-9]/g, '_');
 
 		    //enrypting the new name of the file
-		      	$.post("php/encrypt_api.php", {text: Math.floor(Date.now() / 1000), action: "encrypt"}, function(encrypted_text)
-		      	{
+		      	$.post("php/encrypt_api.php", { text: Math.floor(Date.now() / 1000), action: "encrypt" }, function(encrypted_text) {
 		      		var new_name = only_name + "_" + encrypted_text + "." + image_extension;
 		      		
 		      	//showing the link of the upload file
-		      		var web_address   = window.location.href   // Returns the page URL (https://example.com/bro)
+		      		var web_address = window.location.href   // Returns the page URL (https://example.com/bro)
 		      		var link = upload_address + new_name;
 					var complete_link = web_address + link;
-
-		      		$('#upload_link').text(complete_link);
-		      		$('#upload_link').attr('href', complete_link);
-		      		$('#copy_btn').fadeIn(0);
 
 		      	//sending upload request to api
 					var form_data = new FormData();
 					form_data.append("file", property);
 					form_data.append("new_name", new_name);
-					$.ajax(
-					{
+					$.ajax({
 						url: "php/upload_file_on_server.php",
 						method: "POST",
 						data: form_data,
 						contentType: false,
 						cache: false,
 						processData: false,
-						beforeSend:function()
-						{
+						beforeSend:function() {
 							$('.error').html("<img class=\"gif_loader\" src=\"img/loaders2.gif\" /></br>Uploading File").css('color', '#f1f1f1');
 						},
-						success: function(data)
-						{
+						success: function(data) {
 							// console.log(data);
 
 							if(data == 0)
@@ -118,10 +115,17 @@
 							}
 							else if(data == 1)
 							{
+								$('#upload_link').text(complete_link);
+								$('#upload_link').attr('href', complete_link);
+								$('#copy_btn').fadeIn(0);
+
 								$('.error').text("File succesfully uploaded").css("color", 'green');
 							}
 							else
 								$('.error').text("Unknown error").css("color", 'red');
+						},
+						error: function(request,status,errorThrown) {
+							$('.error').text("status: " + status + ", " + errorThrown).css("color", 'red');
 						}
 					});
 		      	});
